@@ -11,4 +11,9 @@ export class LocationService {
       this.http.get('http://localhost:8080/banks')
                .subscribe(callback);
   }
+
+  // getBank(bankName: string, branchId: number, callback: (location: Location) => void): void {
+  //   this.http.get(`http://localhost:8080/branches?bankName=${bankName}&bankId=${branchId}`)
+  //            .subscribe(callback);
+  // }
 }

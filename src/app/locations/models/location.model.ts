@@ -1,9 +1,9 @@
 export class Location {
     constructor(
-        private name: string,
-        private address: string,
-        private latitude: number,
-        private longitude: number,
-        private category: number,
-        private branchId: number){}
+        public name: string,
+        public address: string,
+        public latitude: number,
+        public longitude: number,
+        public category: number,
+        public branchId: number){}
 }

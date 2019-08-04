@@ -23,11 +23,11 @@ export class LocalStorageService{
     // set db(value: string) {
     //     this._db = value
     // }
-    saveData(value: Location[]){
+    saveData(value: Location[]): void{
         localStorage.setItem("DB", JSON.stringify(value));
     } 
 
-    getData(){
+    getData(): Location[]{
         return JSON.parse(localStorage.getItem("DB"));
     }
 }
