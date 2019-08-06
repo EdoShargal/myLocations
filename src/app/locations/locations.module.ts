@@ -7,6 +7,9 @@ import { LocationService } from './services/location.service';
 import { LocationDetailComponent } from './location-detail/location-detail.component';
 import { LocalStorageService } from './services/localStorage.service';
 import { LocalDBService } from './services/localDB.service';
+import { AgmCoreModule } from '@agm/core';
+import { LocationEditComponent } from './location-edit/location-edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +17,8 @@ import { LocalDBService } from './services/localDB.service';
   declarations: [
     LocationsListComponent,
     LocationsComponent,
-    LocationDetailComponent
+    LocationDetailComponent,
+    LocationEditComponent
   ],
   exports: [
     LocationsComponent
@@ -22,6 +26,10 @@ import { LocalDBService } from './services/localDB.service';
   imports: [
     CommonModule,
     LocationsRoutingModule,
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDO1akQb8EyZDe5TRZSF913MZDjnnswKEo'
+    })
   ],
   providers: [
     LocationService,

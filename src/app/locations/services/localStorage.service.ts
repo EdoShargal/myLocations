@@ -1,33 +1,23 @@
 import { Injectable } from '@angular/core';
 import { LocationService } from './location.service';
 import { Location } from '../models/location.model'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class LocalStorageService{
 
-    // _db: any = null
-
-    // constructor(private locationService: LocationService){
-    //     if(this._db == null){
-    //         this.locationService.getBanks(
-    //             locations => this._db = Array(locations)
-    //         )
-    //     }
-    // }
-
-    // get db() { 
-    //     console.log(this._db)
-    //     return this._db
-    // }
-
-    // set db(value: string) {
-    //     this._db = value
-    // }
+    constructor(private http: HttpClient){}
+    
     saveData(value: Location[]): void{
         localStorage.setItem("DB", JSON.stringify(value));
     } 
 
     getData(): Location[]{
         return JSON.parse(localStorage.getItem("DB"));
+    }
+
+    getApiData(callback: (locations: Location[])=> void): void{
+        this.http.get('http://localhost:8080/banks')
+                 .subscribe(callback);
     }
 }

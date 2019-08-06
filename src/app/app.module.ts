@@ -8,12 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { LocationsModule } from './locations/locations.module';
 import { HomeComponent } from './home/home.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

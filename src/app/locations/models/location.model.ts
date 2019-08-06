@@ -5,5 +5,7 @@ export class Location {
         public latitude: number,
         public longitude: number,
         public category: number,
-        public branchId: number){}
+        public locationId: number,
+        public bankCode: string,
+        public brancCode: string){}
 }

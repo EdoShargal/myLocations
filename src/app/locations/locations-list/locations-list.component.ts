@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../models/location.model'
-import { LocationService } from '../services/location.service';
-import { LocalStorageService } from '../services/localStorage.service';
-import { UnsubscriptionError } from 'rxjs';
 import { Router } from '@angular/router';
+import { LocalDBService } from '../services/localDB.service';
 
 @Component({
   selector: 'app-locations-list',
@@ -14,39 +12,39 @@ export class LocationsListComponent implements OnInit {
 
   locations: Location[];
 
-  constructor(private localStoragService: LocalStorageService,
-              private locationService: LocationService,
+  constructor(private localSBService: LocalDBService,
               private router: Router,) { }
 
   ngOnInit() {
-    // Check for first load
-    if (this.localStoragService.getData() == undefined) {
-      // Get banks from api
-      this.locationService.getBanks(
-        locations => {
-          // Save the response to local variable
-          this.locations = locations
-          // Save the data in local storage as DB
-          this.localStoragService.saveData(this.locations)
-        }
-      )
-    } else {
-      // Get data from local storage
-      this.locations = this.localStoragService.getData() 
-    }
+    // // Check for first load
+    // if (this.localStoragService.getData() == undefined) {
+    //   // Get banks from api
+    //   this.locationService.getBanks(
+    //     locations => {
+    //       // Save the response to local variable
+    //       this.locations = locations
+    //       // Save the data in local storage as DB
+    //       this.localStoragService.saveData(this.locations)
+    //     }
+    //   )
+    // } else {
+    //   // Get data from local storage
+    //   this.locations = this.localStoragService.getData() 
+    // }
+    this.locations = this.localSBService.getLocations()
   }
 
-  editLocation(id: number = 0, name: string){
-    
+  editLocation(id: number = 0){
+    this.router.navigate(['locations', 'edit', id])
   }
 
-  goDetails(id: number){
+  goToMap(id: number){
     this.router.navigate(['locations', 'details', id])
   }
 
   deleteLocation(id: number){
     // Getting index number of the element
-    let index = this.locations.findIndex(x => x.branchId === id)
+    let index = this.locations.findIndex(x => x.locationId === id)
 
     // TODO some confirmation before deleting
 
