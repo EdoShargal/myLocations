@@ -10,8 +10,7 @@
 # dependencies
 /node_modules
 
-#google map key
-/src/app/locations/locations.module.ts
+
 
 # profiling files
 chrome-profiler-events.json
