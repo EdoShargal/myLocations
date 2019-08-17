@@ -9,6 +9,8 @@ import { LocalStorageService } from './services/localStorage.service';
 import { LocalDBService } from './services/localDB.service';
 import { LocationEditComponent } from './location-edit/location-edit.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 @NgModule({
@@ -22,7 +24,10 @@ import { LocationEditComponent } from './location-edit/location-edit.component';
   imports: [
     CommonModule,
     LocationsRoutingModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'your-id'
+    })
   ],
   providers: [
     LocalStorageService,
