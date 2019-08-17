@@ -52,7 +52,7 @@ export class LocationsListComponent implements OnInit {
     this.locations.splice(index, 1); 
 
     // Save to local storage the new changes 
-    this.localStoragService.saveData(this.locations)
+    //this.localStoragService.saveData(this.locations)
 
     
   }
