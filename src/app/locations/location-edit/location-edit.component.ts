@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '../models/location.model';
-import { LocalDBService } from '../services/localDB.service';
+import { LocationService } from '../services/location.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class LocationEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private localDBService: LocalDBService) { }
+              private locationService: LocationService) { }
 
   ngOnInit() {
     // Get params from route
@@ -25,17 +25,24 @@ export class LocationEditComponent implements OnInit {
         // Get id as Number
         let id = Number(param.id)
 
-        // Save current element to local variable
-        this.location = this.localDBService.getLocation(id)
+        if(id === 0) {
+          this.location = new Location("", "", 0, 0, 0, 0, "0", "0")
+        } else {
+          // Save current element to local variable
+          this.location = this.locationService.getLocation(id)
+        }
+        
         // Get all available categories
-        this.categories = this.localDBService.getCategories();
+        this.categories = this.locationService.getCategories();
       }
     )
   }
 
   saveLocation(){
-    this.localDBService.saveLocation(this.location)
-    this.router.navigate(['locations', 'list'])
+    // Save Location
+    this.locationService.saveLocation(this.location);
+    // Navigate back to location list 
+    this.router.navigate(["/locations", "list"])
   }
 
 }

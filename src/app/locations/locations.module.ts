@@ -6,10 +6,10 @@ import { LocationsListComponent } from './locations-list/locations-list.componen
 import { LocationsRoutingModule } from './locations-routing.module';
 import { LocationDetailComponent } from './location-detail/location-detail.component';
 import { LocalStorageService } from './services/localStorage.service';
-import { LocalDBService } from './services/localDB.service';
 import { LocationEditComponent } from './location-edit/location-edit.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { LocationService } from './services/location.service';
 
 
 
@@ -31,7 +31,7 @@ import { AgmCoreModule } from '@agm/core';
   ],
   providers: [
     LocalStorageService,
-    LocalDBService
+    LocationService
   ]
 })
 export class LocationsModule { }

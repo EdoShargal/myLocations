@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../models/location.model'
 import { Router } from '@angular/router';
-import { LocalDBService } from '../services/localDB.service';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'app-locations-list',
@@ -12,26 +12,11 @@ export class LocationsListComponent implements OnInit {
 
   locations: Location[];
 
-  constructor(private localSBService: LocalDBService,
+  constructor(private locationService: LocationService,
               private router: Router,) { }
 
   ngOnInit() {
-    // // Check for first load
-    // if (this.localStoragService.getData() == undefined) {
-    //   // Get banks from api
-    //   this.locationService.getBanks(
-    //     locations => {
-    //       // Save the response to local variable
-    //       this.locations = locations
-    //       // Save the data in local storage as DB
-    //       this.localStoragService.saveData(this.locations)
-    //     }
-    //   )
-    // } else {
-    //   // Get data from local storage
-    //   this.locations = this.localStoragService.getData() 
-    // }
-    this.locations = this.localSBService.getLocations()
+    this.locations = this.locationService.getLocations()
   }
 
   editLocation(id: number = 0){

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { LocalDBService } from '../services/localDB.service';
 import { Location } from '../models/location.model';
+import { LocationService } from '../services/location.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class LocationDetailComponent implements OnInit {
 
   location: Location
 
-  constructor(private LocalDBService: LocalDBService,
+  constructor(private LocalDBService: LocationService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,8 +23,8 @@ export class LocationDetailComponent implements OnInit {
         // Get id as Number
         let id = Number(param.id)
 
-        // Save current element to local variable
-        this.location = this.LocalDBService.getLocation(id)
+        //// Save current element to local variable
+        //this.location = this.LocalDBService.getLocation(id)
       }
     )
   }
