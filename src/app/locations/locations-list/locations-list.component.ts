@@ -20,7 +20,8 @@ export class LocationsListComponent implements OnInit {
   }
 
   editLocation(id: number = 0){
-    this.router.navigate(['locations', 'edit', id])
+    if (id == 0) this.router.navigate(['locations', 'new', id])
+    else this.router.navigate(['locations', 'edit', id])
   }
 
   goToMap(id: number){
@@ -37,9 +38,7 @@ export class LocationsListComponent implements OnInit {
     this.locations.splice(index, 1); 
 
     // Save to local storage the new changes 
-    //this.localStoragService.saveData(this.locations)
-
-    
+    //this.localStoragService.saveData(this.locations)  
   }
 
 

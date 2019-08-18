@@ -20,6 +20,10 @@ const routes: Routes = [
     component: LocationEditComponent
   },
   {
+    path: 'new/:id',
+    component: LocationEditComponent
+  },
+  {
     path: '',
     redirectTo: 'list',
     pathMatch: 'full'
